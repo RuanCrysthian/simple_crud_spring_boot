@@ -36,7 +36,7 @@ cd crud/
 Inicie a aplicação.
 
 ```
-mvn spring-boot: run
+mvn spring-boot:run
 ```
 
 O Spring Boot iniciará o servidor e o aplicativo estará disponível em `http://localhost:8080`.
