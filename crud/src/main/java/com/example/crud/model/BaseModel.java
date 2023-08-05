@@ -9,7 +9,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+import java.util.Objects;
+
+@MappedSuperclass
 public abstract class BaseModel implements Serializable {
 
   @Id
@@ -57,6 +61,47 @@ public abstract class BaseModel implements Serializable {
 
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public BaseModel id(Long id) {
+    setId(id);
+    return this;
+  }
+
+  public BaseModel createdAt(LocalDateTime createdAt) {
+    setCreatedAt(createdAt);
+    return this;
+  }
+
+  public BaseModel updatedAt(LocalDateTime updatedAt) {
+    setUpdatedAt(updatedAt);
+    return this;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this)
+      return true;
+    if (!(o instanceof BaseModel)) {
+      return false;
+    }
+    BaseModel baseModel = (BaseModel) o;
+    return Objects.equals(id, baseModel.id) && Objects.equals(createdAt, baseModel.createdAt)
+        && Objects.equals(updatedAt, baseModel.updatedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
+    return "{" +
+        " id='" + getId() + "'" +
+        ", createdAt='" + getCreatedAt() + "'" +
+        ", updatedAt='" + getUpdatedAt() + "'" +
+        "}";
   }
 
 }
