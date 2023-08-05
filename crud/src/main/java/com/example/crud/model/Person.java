@@ -2,6 +2,8 @@ package com.example.crud.model;
 
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import java.util.Objects;
@@ -11,7 +13,9 @@ import java.util.Objects;
 @JsonPropertyOrder({ "id", "name", "cpf", "createdAt", "updatedAt" })
 public class Person extends BaseModel {
 
+  @Column(name = "name", nullable = false, length = 80)
   private String name;
+  @Column(name = "cpf", nullable = false, length = 80)
   private String cpf;
 
   public Person() {
