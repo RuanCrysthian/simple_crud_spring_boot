@@ -9,6 +9,13 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 - Java 17 ou superior
 - PostgreSQL
 
+## Ferramentas utilizadas
+ - Spring Boot
+ - Spring JPA
+ - Flyway (fazer migrations)
+ - PostgreSQL
+ - Swagger
+
 ## Configuração do Banco de Dados
 
 Antes de executar o projeto, crie um banco de dados no PostgreSQL. O nome do banco pode ser configurado no arquivo `application.properties`, localizado na pasta `src/main/resources`. Você deve ajustar a propriedade `spring.datasource.url`, `spring.datasource.username` e `spring.datasource.password` conforme suas configurações do PostgreSQL.
@@ -23,6 +30,9 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.show-sql=true
 spring.jpa.open-in-view = true
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+springdoc.pathsToMatch=/**/**
+springdoc.swagger-ui.url=true
 ```
 
 ## Executando o Projeto
